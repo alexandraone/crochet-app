@@ -10,7 +10,7 @@ const Container = styled.div`
 `;
 
 const Image = styled.img`
-  max-height: 580px;
+  max-height: 500px;
   width: auto;
   object-fit: cover;
   padding: 0.25rem;

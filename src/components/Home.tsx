@@ -5,8 +5,9 @@ import Header from './Header';
 import ImageList from './ImageList';
 
 const Container = styled.div`
-  width: 95%;
+  width: 98%;
   margin: 0 auto;
+  /* margin-top: 100px; */
 `;
 
 const Home: FC = () => {

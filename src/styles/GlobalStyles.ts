@@ -8,7 +8,6 @@ html {
 }
 
 * {
-  font-family: 'Sans Serif';
   box-sizing: inherit;
 }
 
@@ -34,6 +33,11 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+html, body {
+  font-family: 'Sans Serif';
+
 }
 
 `;

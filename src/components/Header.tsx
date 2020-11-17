@@ -1,41 +1,60 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import Burger from '../ui/Burger';
+import SideMenu from './SideMenu';
 
 const StyledHeader = styled.header`
+  font-family: 'BioRhyme', serif;
+  font-size: 1.25rem;
   position: fixed;
   top: 0;
   left: 0;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
   color: black;
   height: 100px;
   width: 100%;
-  transition: background 0.5s ease-in;
+  transition: all 0.5s ease-in-out;
   z-index: 2;
 
   &.active {
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.8);
     color: white;
   }
 `;
 
 const Container = styled.div`
   display: flex;
+  align-items: center;
   margin: 30px;
 
-  & :first-of-type {
+  & a:first-of-type {
     flex-grow: 1;
   }
 `;
 
-const About = styled.div`
-  margin: 0 10px;
+const RightLinks = styled.div`
+  & > * {
+    margin: 0 1.5rem;
+  }
+`;
+
+const MenuButton = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
 `;
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
 
   const listenScrollEvent = () => {
-    console.log(window.scrollY);
     window.scrollY > 0 ? setScrolled(true) : setScrolled(false);
   };
 
@@ -49,10 +68,16 @@ const Header = () => {
   return (
     <StyledHeader className={scrolled ? 'header active' : 'header'}>
       <Container>
-        <div>DIY - Virkning</div>
-        <About>Om mig</About>
-        <div>Mönster</div>
+        <Link to='/'>DIY - Virkning</Link>
+        <RightLinks>
+          <Link to='/about'>Om mig</Link>
+          <Link to='/pattern'>Mönster</Link>
+        </RightLinks>
+        <MenuButton onClick={() => setShowMenu(!showMenu)}>
+          <Burger className={showMenu ? 'open' : ''} scrolled={scrolled} />
+        </MenuButton>
       </Container>
+      {showMenu && <SideMenu showMenu={showMenu} />}
     </StyledHeader>
   );
 };
