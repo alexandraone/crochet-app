@@ -6,6 +6,7 @@ import ImageList from './ImageList';
 
 const Container = styled.div`
   width: 98%;
+  height: 100vh;
   margin: 0 auto;
   /* margin-top: 100px; */
 `;

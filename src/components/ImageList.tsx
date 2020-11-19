@@ -1,29 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
+import Image from './Image';
 import images from './images';
 
 const Container = styled.div`
+  position: relative;
   display: flex;
   flex-wrap: wrap;
-  background: white;
-  flex-grow: 1;
-`;
-
-const Image = styled.img`
-  max-height: 500px;
-  width: auto;
-  object-fit: cover;
-  padding: 0.25rem;
-  opacity: 0.6;
-  flex-grow: 1;
+  background: #fff;
+  min-height: 100vh;
 `;
 
 const ImageList = () => {
-  console.log(images);
   return (
     <Container>
-      {images.map(({ id, src, description }) => (
-        <Image src={src} key={id} alt={description} />
+      {images.map((image, index) => (
+        <Image image={image} key={index} />
       ))}
     </Container>
   );

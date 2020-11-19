@@ -9,7 +9,6 @@ import IMG_1016 from '../static/images/IMG_1016.jpg';
 
 const images = [
   { id: 1, src: IMG_0732, title: '', description: 'virkning' },
-
   { id: 2, src: IMG_1004, title: '', description: 'virkning' },
   { id: 3, src: IMG_0646, title: '', description: 'virkning' },
   { id: 4, src: IMG_0647, title: '', description: 'virkning' },
