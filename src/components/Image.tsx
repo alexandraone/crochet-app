@@ -1,5 +1,6 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
+import { useClickedOutside } from './hooks/useClickedOutside';
 
 interface ImageProps {
   image: {
@@ -50,9 +51,9 @@ const ImageBox = styled.div`
     position: absolute;
     top: 50px;
     left: 100px;
-    right: 600px;
+    right: 100px;
     bottom: 50px;
-    width: calc(100% - 700px);
+    width: calc(100% - 200px);
     height: calc(100% - 100px);
   }
 `;
@@ -66,16 +67,21 @@ const Content = styled.div<ContentProps>`
   visibility: ${({ clicked }) => (clicked ? 'visible' : 'hidden')};
   color: #fff;
   position: absolute;
-   bottom: 0;
-  right: 50px;
-  left: 50px; */
-  background: rgba(0, 0, 0, 0.8);
+  top: 50px;
+  bottom: 50px;
+  right: 100px;
+  left: 800px;
+  background: rgba(0, 0, 0, 0.9);
+  padding: 20px;
 `;
 
 const Image: FC<ImageProps> = ({ image }) => {
   const [clickedId, setClickedId] = useState(-1);
   const [clicked, setClicked] = useState(false);
   const { id, src, description } = image;
+
+  const clickOutsideRef = useRef(null);
+  useClickedOutside(clickOutsideRef, setClicked);
 
   useEffect(() => {
     if (clicked) {
@@ -94,20 +100,22 @@ const Image: FC<ImageProps> = ({ image }) => {
       <ImageBox
         onClick={() => {
           setClickedId(id);
-          setClicked(!clicked);
+          setClicked(true);
         }}
         className={clicked && id === clickedId ? 'active' : ''}
       >
-        <StyledImage src={src} alt={description} key={id} />
-        <Content clicked={clicked}>
-          <h3 className='text'>HEJ</h3>
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            Laboriosam, eos. Nulla, nobis. Eos ut quos ab, magni rem sit
-            laboriosam enim, consequatur ipsam non suscipit blanditiis earum
-            velit incidunt fugiat.
-          </p>
-        </Content>
+        <div ref={clicked ? clickOutsideRef : null}>
+          <StyledImage src={src} alt={description} key={id} />
+          <Content clicked={clicked}>
+            <h3 className='text'>HEJ</h3>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+              Laboriosam, eos. Nulla, nobis. Eos ut quos ab, magni rem sit
+              laboriosam enim, consequatur ipsam non suscipit blanditiis earum
+              velit incidunt fugiat.
+            </p>
+          </Content>
+        </div>
       </ImageBox>
     </Box>
   );
