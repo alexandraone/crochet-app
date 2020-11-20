@@ -14,7 +14,6 @@ interface ImageContentModalProps {
   setIsShowing: any;
   image: Image;
   className: any;
-  clicked: boolean;
 }
 
 const ModalWrapper = styled.div`
@@ -58,7 +57,6 @@ const ImageContentModal = ({
   setIsShowing,
   isShowing,
   image,
-  clicked,
 }: ImageContentModalProps) => {
   const clickOutsideRef = useRef(null);
   useClickedOutside(clickOutsideRef, setIsShowing);
@@ -74,9 +72,12 @@ const ImageContentModal = ({
         aria-hidden
         tabIndex={-1}
         role='dialog'
-        className={clicked ? 'active' : ''}
+        className={isShowing ? 'active' : ''}
       >
-        <StyledModal ref={clickOutsideRef} className={clicked ? 'active' : ''}>
+        <StyledModal
+          ref={clickOutsideRef}
+          className={isShowing ? 'active' : ''}
+        >
           <div style={{ display: 'flex', height: '100%' }}>
             <StyledImage src={src} alt={title} />
             <Content>

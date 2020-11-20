@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect } from 'react';
 import styled from 'styled-components';
 import useModal from './hooks/useModal';
 import ImageContentModal from './ImageContentModal';
@@ -41,10 +41,9 @@ const ImageBox = styled.div`
 `;
 
 const Image: FC<ImageProps> = ({ image }) => {
-  const [clicked, setClicked] = useState(false);
   const { id, src, description, title } = image;
 
-  const { isShowing, setIsShowing, toggle } = useModal();
+  const { isShowing, setIsShowing } = useModal();
 
   useEffect(() => {
     if (isShowing) {
@@ -62,17 +61,15 @@ const Image: FC<ImageProps> = ({ image }) => {
     <Box>
       <ImageBox
         onClick={() => {
-          setClicked(true);
           setIsShowing(true);
         }}
       >
         <StyledImage src={src} alt={title} key={id} />
         <ImageContentModal
-          className={clicked ? 'active' : ''}
+          className={isShowing ? 'active' : ''}
           isShowing={isShowing}
           setIsShowing={setIsShowing}
           image={image}
-          clicked={clicked}
         />
       </ImageBox>
     </Box>
