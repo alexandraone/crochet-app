@@ -3,6 +3,17 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Container = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1200;
+  width: 100%;
+  height: 100%;
+  color: black;
+  background: rgba(0, 0, 0, 0.8);
+`;
+
+const StyledSideMenu = styled.aside`
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -11,6 +22,7 @@ const Container = styled.div`
   background: rgba(0, 0, 0, 0.9);
   height: 100vh;
   width: 40%;
+  z-index: 1210;
 
   a:first-child {
     margin-top: 100px;
@@ -38,18 +50,20 @@ const SideMenu = ({ showMenu }: { showMenu: boolean }) => {
 
   return (
     <Container>
-      <Link to='/pattern' className='sidemenu_link'>
-        Mönster
-      </Link>
-      <Link to='/portfolio' className='sidemenu_link'>
-        Mina virkningar
-      </Link>
-      <Link to='/contact' className='sidemenu_link'>
-        Kontakta mig
-      </Link>
-      <Link to='/about' className='sidemenu_link'>
-        Om mig
-      </Link>
+      <StyledSideMenu>
+        <Link to='/pattern' className='sidemenu_link'>
+          Mönster
+        </Link>
+        <Link to='/portfolio' className='sidemenu_link'>
+          Mina virkningar
+        </Link>
+        <Link to='/contact' className='sidemenu_link'>
+          Kontakta mig
+        </Link>
+        <Link to='/about' className='sidemenu_link'>
+          Om mig
+        </Link>
+      </StyledSideMenu>
     </Container>
   );
 };

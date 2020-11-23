@@ -10,7 +10,7 @@ const Burger = styled.div<IBurgerProps>`
   background: ${({ scrolled }) => (scrolled ? '#fff' : '#000')};
   border-radius: 5px;
   transition: all 0.5s ease-in-out;
-  z-index: 100;
+  z-index: 1220;
 
   &::before,
   &::after {

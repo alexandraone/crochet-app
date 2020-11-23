@@ -1,9 +1,9 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
-import useModal from './hooks/useModal';
-import ImageContentModal from './ImageContentModal';
+import { ImageType } from './ImageContentModal';
 
 export interface ImageProps {
+  onImageClick: (isShowing: boolean, image: ImageType) => void;
   image: {
     src: string;
     id: number;
@@ -38,38 +38,20 @@ const ImageBox = styled.div`
   height: 100%;
   background: rgba(0, 0, 0, 0.7);
   opacity: 0.8;
+  cursor: pointer;
 `;
 
-const Image: FC<ImageProps> = ({ image }) => {
-  const { id, src, description, title } = image;
-
-  const { isShowing, setIsShowing } = useModal();
-
-  useEffect(() => {
-    if (isShowing) {
-      document.body.style.overflowY = 'hidden';
-    } else {
-      document.body.style.overflowY = 'unset';
-    }
-
-    return () => {
-      document.body.style.overflowY = 'unset';
-    };
-  }, [isShowing]);
+const Image: FC<ImageProps> = ({ image, onImageClick }) => {
+  const { id, src, title } = image;
 
   return (
     <Box>
-      <ImageBox
-        onClick={() => {
-          setIsShowing(true);
-        }}
-      >
-        <StyledImage src={src} alt={title} key={id} />
-        <ImageContentModal
-          className={isShowing ? 'active' : ''}
-          isShowing={isShowing}
-          setIsShowing={setIsShowing}
-          image={image}
+      <ImageBox>
+        <StyledImage
+          src={src}
+          alt={title}
+          key={id}
+          onClick={() => onImageClick(true, image)}
         />
       </ImageBox>
     </Box>
