@@ -31,7 +31,7 @@ a {
 }
 
 html, body {
-  font-family: 'Sans Serif';
+  font-family: 'Arial';
 
 }
 

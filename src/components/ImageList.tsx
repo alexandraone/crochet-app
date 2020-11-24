@@ -13,7 +13,7 @@ const Container = styled.div`
 `;
 
 const ImageList = () => {
-  const { isOpen, setIsOpen, toggle } = useModal();
+  const { isOpen, setIsOpen } = useModal();
   const [image, setImage] = useState({ src: '', description: '', title: '' });
 
   const onImageClick = (isShowing: boolean, image: ImageType) => {

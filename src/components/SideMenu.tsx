@@ -35,7 +35,13 @@ const StyledSideMenu = styled.aside`
   }
 `;
 
-const SideMenu = ({ showMenu }: { showMenu: boolean }) => {
+const SideMenu = ({
+  showMenu,
+  setShowMenu,
+}: {
+  showMenu: boolean;
+  setShowMenu: (item: boolean) => void;
+}) => {
   useEffect(() => {
     if (showMenu) {
       document.body.style.overflowY = 'hidden';
@@ -51,16 +57,32 @@ const SideMenu = ({ showMenu }: { showMenu: boolean }) => {
   return (
     <Container>
       <StyledSideMenu>
-        <Link to='/pattern' className='sidemenu_link'>
+        <Link
+          to='/pattern'
+          className='sidemenu_link'
+          onClick={() => setShowMenu(false)}
+        >
           Mönster
         </Link>
-        <Link to='/portfolio' className='sidemenu_link'>
+        <Link
+          to='/portfolio'
+          className='sidemenu_link'
+          onClick={() => setShowMenu(false)}
+        >
           Mina virkningar
         </Link>
-        <Link to='/contact' className='sidemenu_link'>
+        <Link
+          to='/contact'
+          className='sidemenu_link'
+          onClick={() => setShowMenu(false)}
+        >
           Kontakta mig
         </Link>
-        <Link to='/about' className='sidemenu_link'>
+        <Link
+          to='/about'
+          className='sidemenu_link'
+          onClick={() => setShowMenu(false)}
+        >
           Om mig
         </Link>
       </StyledSideMenu>

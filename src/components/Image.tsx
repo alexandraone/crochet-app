@@ -28,6 +28,10 @@ const Box = styled.div`
   overflow: hidden;
   flex-grow: 1;
   display: flex;
+
+  &:nth-last-child(-n + 2) {
+    margin-bottom: 0;
+  }
 `;
 
 const ImageBox = styled.div`

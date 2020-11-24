@@ -77,7 +77,7 @@ const Header = () => {
           <Burger className={showMenu ? 'open' : ''} scrolled={scrolled} />
         </MenuButton>
       </Container>
-      {showMenu && <SideMenu showMenu={showMenu} />}
+      {showMenu && <SideMenu showMenu={showMenu} setShowMenu={setShowMenu} />}
     </StyledHeader>
   );
 };
