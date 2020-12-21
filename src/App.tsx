@@ -4,6 +4,7 @@ import About from './components/About';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Home from './components/Home';
+import ImageList from './components/ImageList';
 import GlobalStyle from './styles/GlobalStyles';
 
 const App: FC = () => {
@@ -17,6 +18,9 @@ const App: FC = () => {
         </Route>
         <Route path='/about' exact>
           <About />
+        </Route>
+        <Route path='/portfolio' exact>
+          <ImageList />
         </Route>
       </Switch>
       <Footer />
