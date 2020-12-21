@@ -9,7 +9,6 @@ const Container = styled.div`
   position: relative;
   display: flex;
   flex-wrap: wrap;
-  background: #fff;
 `;
 
 const ImageList = () => {

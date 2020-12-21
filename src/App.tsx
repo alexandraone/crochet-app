@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import About from './components/About';
-import DefaultLayout from './components/DefaultLayout';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Home from './components/Home';
@@ -14,9 +13,7 @@ const App: FC = () => {
       <Header />
       <Switch>
         <Route path='/' exact>
-          <DefaultLayout>
-            <Home />
-          </DefaultLayout>
+          <Home />
         </Route>
         <Route path='/about' exact>
           <About />

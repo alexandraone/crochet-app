@@ -1,18 +1,30 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
+import DefaultLayout from './DefaultLayout';
+import Hero from './Hero';
 import ImageList from './ImageList';
 
-const Container = styled.div`
-  width: 98%;
-  margin: 0 auto;
-  margin-top: 100px;
+const ImageListWrapper = styled.div`
+  padding: 12rem 0;
+`;
+
+const Heading = styled.h1`
+  font-family: 'BioRhyme', serif;
+  font-size: 2rem;
+  padding-bottom: 4rem;
 `;
 
 const Home: FC = () => {
   return (
-    <Container>
-      <ImageList />
-    </Container>
+    <>
+      <Hero />
+      <DefaultLayout backgroundDark>
+        <ImageListWrapper>
+          <Heading>Mina virkningar</Heading>
+          <ImageList />
+        </ImageListWrapper>
+      </DefaultLayout>
+    </>
   );
 };
 
