@@ -11,8 +11,9 @@ const images = [
   {
     id: 1,
     src: IMG_0732,
-    title: 'Virkad mössa',
+    title: 'Virkad mössa Elsa',
     description: 'Mönstret för att göra denna mössa kommer från ....',
+    madeBy: 'Emelie Nila, #emelieNila',
   },
   {
     id: 2,

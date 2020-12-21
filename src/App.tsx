@@ -13,14 +13,14 @@ const App: FC = () => {
       <GlobalStyle />
       <Header />
       <Switch>
-        <DefaultLayout>
-          <Route path='/' exact>
+        <Route path='/' exact>
+          <DefaultLayout>
             <Home />
-          </Route>
-          <Route path='/about' exact>
-            <About />
-          </Route>
-        </DefaultLayout>
+          </DefaultLayout>
+        </Route>
+        <Route path='/about' exact>
+          <About />
+        </Route>
       </Switch>
       <Footer />
     </BrowserRouter>

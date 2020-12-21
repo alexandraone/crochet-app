@@ -19,7 +19,7 @@ h1, h2, h3, h4, h5, p {
 body {
   padding: 0;
   margin: 0;
-  background: white;
+  background: #f7f7f7;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
