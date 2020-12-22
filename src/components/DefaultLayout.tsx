@@ -1,25 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
-
-interface ContainerProps {
-  backgroundDark: boolean;
-}
-
-const Wrapper = styled.div<ContainerProps>`
-  background-color: ${({ backgroundDark }) =>
-    backgroundDark ? '#e6e6e6' : '#fff'};
-`;
+import Footer from './Footer';
+import Header from './Header';
 
 const Container = styled.div`
-  width: 80%;
-  margin: 0 auto;
   min-height: calc(100vh - 100px - 80px);
 `;
 
-const DefaultLayout = ({ children, backgroundDark }: any) => (
-  <Wrapper backgroundDark={backgroundDark}>
+const DefaultLayout = ({ children }: any) => (
+  <>
+    <Header />
     <Container>{children}</Container>
-  </Wrapper>
+    <Footer />
+  </>
 );
 
 export default DefaultLayout;

@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import DefaultLayout from './DefaultLayout';
+import Section from '../styles/Section';
 import Hero from './Hero';
 import ImageList from './ImageList';
 
@@ -18,12 +18,12 @@ const Home: FC = () => {
   return (
     <>
       <Hero />
-      <DefaultLayout backgroundDark>
+      <Section backgroundDark>
         <ImageListWrapper>
           <Heading>Mina virkningar</Heading>
           <ImageList />
         </ImageListWrapper>
-      </DefaultLayout>
+      </Section>
     </>
   );
 };
