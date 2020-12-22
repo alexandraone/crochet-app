@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import ForestBgVideo from '../static/crochet-video.mp4';
 import IMG_0219 from '../static/images/IMG_0219.jpg';
 
 const Container = styled.div`
@@ -10,7 +9,10 @@ const Container = styled.div`
   padding: 4rem;
   padding-left: 9rem;
   padding-bottom: 10rem;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: #fff;
+  border-radius: 5px;
+  transform: skewX(-12deg);
+  box-shadow: 0 1rem 6rem rgba(0, 0, 0, 0.5);
 `;
 
 const Figure = styled.figure`
@@ -21,6 +23,7 @@ const Figure = styled.figure`
   shape-outside: circle(50% at 50% 50%);
   -webkit-clip-path: circle(50% at 50% 50%);
   clip-path: circle(50% at 50% 50%);
+  transform: skewX(12deg);
 `;
 
 const Image = styled.img`
@@ -30,6 +33,7 @@ const Image = styled.img`
 
 const TextBox = styled.div`
   margin: 40px 0 0 60px;
+  transform: skewX(12deg);
 `;
 
 const Heading = styled.h1`
@@ -45,31 +49,9 @@ const Wrapper = styled.div`
   padding: 15rem 0;
 `;
 
-const BgVideo = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  z-index: -1;
-  opacity: 0.25;
-  overflow: hidden;
-`;
-
-const Video = styled.video`
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-`;
-
 const About = () => {
   return (
     <Wrapper>
-      <BgVideo>
-        <Video autoPlay muted loop>
-          <source src={ForestBgVideo} type='video/webm' />
-        </Video>
-      </BgVideo>
       <Container>
         <Figure>
           <Image src={IMG_0219} alt='me' />

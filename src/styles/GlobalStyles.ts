@@ -5,6 +5,8 @@ html {
   box-sizing: border-box;
   font-size: 16px;
   padding: 0;
+  background-color: #f7f7f7;
+
 }
 
 * {
@@ -19,7 +21,6 @@ h1, h2, h3, h4, h5, p {
 body {
   padding: 0;
   margin: 0;
-  background: #f7f7f7;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
