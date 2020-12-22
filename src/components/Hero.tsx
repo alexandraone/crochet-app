@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { HashLink as Link } from 'react-router-hash-link';
 import styled from 'styled-components';
 import ForestBgVideo from '../static/crochet-video.mp4';
 
@@ -56,7 +56,7 @@ const Hero = () => {
           <source src={ForestBgVideo} type='video/webm' />
         </Video>
       </BgVideo>
-      <Button to='/portfolio'>Se mina virkningar</Button>
+      <Button to='#mina-virkningar'>Se mina virkningar</Button>
     </Wrapper>
   );
 };
