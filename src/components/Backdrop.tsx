@@ -12,7 +12,7 @@ const StyledBackdrop = styled.div`
   z-index: 1200;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.5);
 `;
 
 const Backdrop = ({ backdropClick }: BackdropProps) => {
