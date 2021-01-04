@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { devices } from '../helpers/devices';
 
 interface SideMenuProps {
   show: boolean;
@@ -29,6 +30,10 @@ const StyledSideMenu = styled.aside<SideMenuProps>`
     color: #fff;
     margin: 30px 0 0 30px;
     cursor: pointer;
+  }
+
+  @media ${devices.mobileL} {
+    width: 100%;
   }
 `;
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { HashLink as Link } from 'react-router-hash-link';
 import styled from 'styled-components';
+import { devices } from '../helpers/devices';
 import ForestBgVideo from '../static/crochet-video.mp4';
 
 const Wrapper = styled.div`
@@ -36,6 +37,14 @@ const Heading = styled.h1`
   color: white;
   text-transform: uppercase;
   letter-spacing: 3.5px;
+
+  @media ${devices.mobileL} {
+    font-size: 3.5rem;
+  }
+
+  @media ${devices.mobileS} {
+    font-size: 3rem;
+  }
 `;
 
 const Button = styled(Link)`
@@ -45,6 +54,13 @@ const Button = styled(Link)`
   font-weight: bold;
   letter-spacing: 3.5px;
   text-transform: uppercase;
+
+  @media ${devices.mobileM} {
+    padding: 1rem 0;
+    letter-spacing: 2.5px;
+    width: 100%;
+    text-align: center;
+  }
 `;
 
 const Hero = () => {

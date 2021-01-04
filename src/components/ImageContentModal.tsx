@@ -1,6 +1,7 @@
 import React, { Dispatch, SetStateAction, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
+import { devices } from '../helpers/devices';
 import { useClickedOutside } from './hooks/useClickedOutside';
 
 export interface ImageType {
@@ -54,6 +55,11 @@ const StyledModal = styled.div`
   width: 80%;
   height: 80%;
   cursor: default;
+
+  @media ${devices.mobileL} {
+    width: 100%;
+    height: 60%;
+  }
 `;
 
 const Content = styled.div`

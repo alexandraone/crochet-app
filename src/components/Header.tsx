@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { devices } from '../helpers/devices';
 import Burger from '../ui/Burger';
 import Backdrop from './Backdrop';
 import SideMenu from './SideMenu';
@@ -37,6 +38,10 @@ const Container = styled.div`
 const RightLinks = styled.div`
   & > * {
     margin: 0 1.5rem;
+  }
+
+  @media ${devices.tablet} {
+    display: none;
   }
 `;
 
