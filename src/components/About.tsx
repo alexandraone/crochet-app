@@ -3,36 +3,33 @@ import styled from 'styled-components';
 import IMG_0219 from '../static/images/IMG_0219.jpg';
 
 const Container = styled.div`
-  position: relative;
-  width: 65%;
+  width: 75%;
   margin: 0 auto;
-  padding: 4rem;
-  padding-left: 9rem;
-  padding-bottom: 10rem;
-  background-color: #fff;
+  box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.3);
+  background-color: rgba(255, 255, 255, 0.6);
   border-radius: 5px;
+  padding: 6rem;
+  padding-left: 9rem;
   transform: skewX(-12deg);
-  box-shadow: 0 1rem 6rem rgba(0, 0, 0, 0.5);
 `;
 
 const Figure = styled.figure`
-  width: 20rem;
-  height: 20rem;
+  width: 15rem;
+  height: 15rem;
   float: left;
   -webkit-shape-outside: circle(50% at 50% 50%);
   shape-outside: circle(50% at 50% 50%);
   -webkit-clip-path: circle(50% at 50% 50%);
   clip-path: circle(50% at 50% 50%);
-  transform: skewX(12deg);
+  transform: translateX(-2rem) skewX(12deg);
 `;
 
 const Image = styled.img`
   height: 100%;
-  transform: translateX(-18rem);
+  transform: translateX(-15rem);
 `;
 
 const TextBox = styled.div`
-  margin: 40px 0 0 60px;
   transform: skewX(12deg);
 `;
 
@@ -44,9 +41,9 @@ const Heading = styled.h1`
 const Paragraph = styled.p``;
 
 const Wrapper = styled.div`
-  position: relative;
-  height: 100vh;
-  padding: 15rem 0;
+  padding: 10rem 0;
+  max-width: 114rem;
+  margin: 0 auto;
 `;
 
 const About = () => {
@@ -70,17 +67,6 @@ const About = () => {
           </Paragraph>
         </TextBox>
       </Container>
-      {/* <Container>
-        <TextBox>
-          <Heading>ÖVRIGT</Heading>
-          <Paragraph>
-            När jag inte virkar på fritiden så jobbar jag som webbutvecklare.
-            Jag tänkte därför: Varför inte kombinera mina två passioner genom
-            att göra en hemsida om mina virkning.
-          </Paragraph>
-        </TextBox>
-        <Image src={IMG_0219} alt='me' />
-      </Container> */}
     </Wrapper>
   );
 };
