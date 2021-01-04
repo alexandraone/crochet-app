@@ -18,6 +18,10 @@ h1, h2, h3, h4, h5, p {
   margin: 0;
 }
 
+h1,h2,h3 {
+  font-family: 'Verdana';
+}
+
 body {
   padding: 0;
   margin: 0;
@@ -32,7 +36,8 @@ a {
 }
 
 html, body {
-  font-family: 'Arial';
+  font-family: 'Cormorant Garamond', 'Arial';
+  font-weight: 500;
 
 }
 
