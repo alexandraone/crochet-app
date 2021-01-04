@@ -72,18 +72,18 @@ const SideMenu = ({
           Mina virkningar
         </Link>
         <Link
-          to='/contact'
-          className='sidemenu_link'
-          onClick={() => setShowMenu(false)}
-        >
-          Kontakta mig
-        </Link>
-        <Link
           to='/about'
           className='sidemenu_link'
           onClick={() => setShowMenu(false)}
         >
           Om mig
+        </Link>
+        <Link
+          to='/contact'
+          className='sidemenu_link'
+          onClick={() => setShowMenu(false)}
+        >
+          Kontakta mig
         </Link>
       </StyledSideMenu>
     </Container>
