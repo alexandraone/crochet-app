@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Burger from '../ui/Burger';
+import Backdrop from './Backdrop';
 import SideMenu from './SideMenu';
 
 const StyledHeader = styled.header`
@@ -65,6 +66,10 @@ const Header = () => {
     };
   }, []);
 
+  const backdropClickHandler = () => {
+    setShowMenu(false);
+  };
+
   return (
     <StyledHeader className={scrolled ? 'header active' : 'header'}>
       <Container>
@@ -77,7 +82,8 @@ const Header = () => {
           <Burger className={showMenu ? 'open' : ''} scrolled={scrolled} />
         </MenuButton>
       </Container>
-      {showMenu && <SideMenu showMenu={showMenu} setShowMenu={setShowMenu} />}
+      <SideMenu showMenu={showMenu} setShowMenu={setShowMenu} />
+      {showMenu && <Backdrop backdropClick={backdropClickHandler} />}
     </StyledHeader>
   );
 };

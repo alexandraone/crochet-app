@@ -2,18 +2,11 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const Container = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1200;
-  width: 100%;
-  height: 100%;
-  color: black;
-  background: rgba(0, 0, 0, 0.8);
-`;
+interface SideMenuProps {
+  show: boolean;
+}
 
-const StyledSideMenu = styled.aside`
+const StyledSideMenu = styled.aside<SideMenuProps>`
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -23,6 +16,10 @@ const StyledSideMenu = styled.aside`
   height: 100vh;
   width: 40%;
   z-index: 1210;
+
+  transition: transform 0.3s ease-out;
+  ${({ show }) =>
+    show ? 'transform: translateX(0)' : 'transform: translateX(100%)'};
 
   a:first-child {
     margin-top: 100px;
@@ -55,38 +52,36 @@ const SideMenu = ({
   }, [showMenu]);
 
   return (
-    <Container>
-      <StyledSideMenu>
-        <Link
-          to='/pattern'
-          className='sidemenu_link'
-          onClick={() => setShowMenu(false)}
-        >
-          Mönster
-        </Link>
-        <Link
-          to='/portfolio'
-          className='sidemenu_link'
-          onClick={() => setShowMenu(false)}
-        >
-          Mina virkningar
-        </Link>
-        <Link
-          to='/about'
-          className='sidemenu_link'
-          onClick={() => setShowMenu(false)}
-        >
-          Om mig
-        </Link>
-        <Link
-          to='/contact'
-          className='sidemenu_link'
-          onClick={() => setShowMenu(false)}
-        >
-          Kontakta mig
-        </Link>
-      </StyledSideMenu>
-    </Container>
+    <StyledSideMenu show={showMenu}>
+      <Link
+        to='/pattern'
+        className='sidemenu_link'
+        onClick={() => setShowMenu(false)}
+      >
+        Mönster
+      </Link>
+      <Link
+        to='/portfolio'
+        className='sidemenu_link'
+        onClick={() => setShowMenu(false)}
+      >
+        Mina virkningar
+      </Link>
+      <Link
+        to='/about'
+        className='sidemenu_link'
+        onClick={() => setShowMenu(false)}
+      >
+        Om mig
+      </Link>
+      <Link
+        to='/contact'
+        className='sidemenu_link'
+        onClick={() => setShowMenu(false)}
+      >
+        Kontakta mig
+      </Link>
+    </StyledSideMenu>
   );
 };
 
