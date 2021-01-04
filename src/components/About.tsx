@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { devices } from '../helpers/devices';
 import IMG_0219 from '../static/images/IMG_0219.jpg';
 
 const Container = styled.div`
@@ -11,26 +12,47 @@ const Container = styled.div`
   padding: 6rem;
   padding-left: 9rem;
   transform: skewX(-12deg);
-`;
+  display: flex;
 
-const Figure = styled.figure`
-  width: 15rem;
-  height: 15rem;
-  float: left;
-  -webkit-shape-outside: circle(50% at 50% 50%);
-  shape-outside: circle(50% at 50% 50%);
-  -webkit-clip-path: circle(50% at 50% 50%);
-  clip-path: circle(50% at 50% 50%);
-  transform: translateX(-2rem) skewX(12deg);
+  @media ${devices.tablet} {
+    transform: skewX(0);
+    width: auto;
+    box-shadow: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    max-width: 80%;
+    height: 100vh;
+    background-color: #dfd5d6;
+    text-align: center;
+  }
 `;
 
 const Image = styled.img`
-  height: 100%;
-  transform: translateX(-15rem);
+  width: 20rem;
+  height: 20rem;
+  border-radius: 50%;
+  object-fit: cover;
+  transform: skewX(12deg);
+  margin-right: 3rem;
+
+  @media ${devices.tablet} {
+    transform: skewX(0);
+    margin: 3rem auto;
+  }
+
+  @media ${devices.mobileS} {
+    width: 15rem;
+    height: 15rem;
+  }
 `;
 
 const TextBox = styled.div`
   transform: skewX(12deg);
+
+  @media ${devices.tablet} {
+    transform: skewX(0);
+  }
 `;
 
 const Heading = styled.h1`
@@ -38,21 +60,25 @@ const Heading = styled.h1`
   margin-bottom: 10px;
 `;
 
-const Paragraph = styled.p``;
+const Paragraph = styled.p`
+  font-size: 1.2rem;
+`;
 
 const Wrapper = styled.div`
   padding: 10rem 0;
   max-width: 114rem;
   margin: 0 auto;
+
+  @media ${devices.tablet} {
+    background-color: #dfd5d6;
+  }
 `;
 
 const About = () => {
   return (
     <Wrapper>
       <Container>
-        <Figure>
-          <Image src={IMG_0219} alt='me' />
-        </Figure>
+        <Image src={IMG_0219} alt='me' />
         <TextBox>
           <Heading>BAKGRUND</Heading>
           <Paragraph>
