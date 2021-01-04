@@ -15,7 +15,7 @@ const StyledHeader = styled.header`
   height: 100px;
   width: 100%;
   transition: all 0.5s ease-in-out;
-  z-index: 2;
+  z-index: 1000;
 
   &.active {
     background: rgba(0, 0, 0, 0.8);

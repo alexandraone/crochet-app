@@ -9,6 +9,7 @@ export interface ImageProps {
     id: number;
     description: string;
     title: string;
+    madeBy: string;
   };
 }
 
@@ -28,9 +29,15 @@ const Box = styled.div`
   overflow: hidden;
   flex-grow: 1;
   display: flex;
+  transition: transform 0.3s;
 
   &:nth-last-child(-n + 2) {
     margin-bottom: 0;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+    z-index: 2;
   }
 `;
 
@@ -46,7 +53,7 @@ const ImageBox = styled.div`
 `;
 
 const Image: FC<ImageProps> = ({ image, onImageClick }) => {
-  const { id, src, title } = image;
+  const { id, src, title, madeBy } = image;
 
   return (
     <Box>

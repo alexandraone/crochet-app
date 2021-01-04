@@ -20,6 +20,7 @@ const images = [
     src: IMG_1004,
     title: 'Grytlapp',
     description: 'Mönstret för att göra denna grytlapp kommer från ....',
+    madeBy: 'Emelie Nila, #emelieNila',
   },
   {
     id: 3,
@@ -27,36 +28,42 @@ const images = [
     title: 'Disktrasa snäck',
     description:
       'Mönstret för att göra denna disktrasa med snäck-stygn kommer från ....',
+    madeBy: 'Emelie Nila, #emelieNila',
   },
   {
     id: 4,
     src: IMG_0647,
     title: 'Disktrasa',
     description: 'Mönstret för att göra denna disktrasa kommer från ....',
+    madeBy: 'Emelie Nila, #emelieNila',
   },
   {
     id: 5,
     src: IMG_0612,
     title: 'Glasunderlägg',
     description: 'Mönstret för att göra detta glasunderlägg kommer från ....',
+    madeBy: 'Emelie Nila, #emelieNila',
   },
   {
     id: 6,
     src: IMG_0613,
     title: 'Glasunderlägg',
     description: 'Mönstret för att göra detta glasunderlägg kommer från ....',
+    madeBy: 'Emelie Nila, #emelieNila',
   },
   {
     id: 7,
     src: IMG_1008,
     title: 'Grytlapp',
     description: 'Mönstret för att göra denna grytlapp kommer från ....',
+    madeBy: 'Emelie Nila, #emelieNila',
   },
   {
     id: 8,
     src: IMG_1016,
     title: 'Mössor',
     description: 'Mönstret för att göra denna blåa mössa kommer från ....',
+    madeBy: 'Emelie Nila, #emelieNila',
   },
 ];
 
