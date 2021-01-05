@@ -73,6 +73,7 @@ const Wrapper = styled.div`
 
   @media ${devices.tablet} {
     background-color: #dfd5d6;
+    height: auto;
   }
 `;
 
