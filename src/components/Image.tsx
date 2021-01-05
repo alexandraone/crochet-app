@@ -35,7 +35,8 @@ const Box = styled.div`
     margin-bottom: 0;
   }
 
-  &:hover {
+  &:hover,
+  &:active {
     transform: scale(1.05);
     z-index: 2;
   }

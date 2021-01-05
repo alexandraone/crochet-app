@@ -5,8 +5,8 @@ interface IBurgerProps {
 }
 
 const Burger = styled.div<IBurgerProps>`
-  width: 30px;
-  height: 4px;
+  width: 28px;
+  height: 3px;
   background: ${({ scrolled }) => (scrolled ? '#fff' : '#000')};
   border-radius: 5px;
   transition: all 0.5s ease-in-out;
@@ -16,18 +16,18 @@ const Burger = styled.div<IBurgerProps>`
   &::after {
     content: '';
     position: absolute;
-    width: 30px;
-    height: 4px;
+    width: 28px;
+    height: 3px;
     background: ${({ scrolled }) => (scrolled ? '#fff' : '#000')};
     border-radius: 5px;
     transition: all 0.5s ease-in-out;
   }
 
   &::before {
-    transform: translateY(-10px);
+    transform: translateY(-8px);
   }
   &::after {
-    transform: translateY(10px);
+    transform: translateY(8px);
   }
 
   &.open {

@@ -66,8 +66,10 @@ const Paragraph = styled.p`
 
 const Wrapper = styled.div`
   padding: 10rem 0;
-  max-width: 114rem;
+  max-width: 120rem;
   margin: 0 auto;
+  background-color: #dfd5d6;
+  height: 100vh;
 
   @media ${devices.tablet} {
     background-color: #dfd5d6;

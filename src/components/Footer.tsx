@@ -50,7 +50,7 @@ const Footer = () => {
   return (
     <StyledFooter>
       <FooterContent>
-        <Text>Copyright &copy; 2020 Alexandra Onegård</Text>
+        <Text>Copyright &copy; 2021 Alexandra Onegård</Text>
         <div>
           <SocialIconLink
             href='https://www.linkedin.com/in/alexandra-onegård-974431154'

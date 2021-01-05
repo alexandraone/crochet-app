@@ -52,6 +52,7 @@ const Button = styled(Link)`
   padding: 2rem;
   font-size: 1.5rem;
   font-weight: bold;
+  font-family: 'Arial';
   letter-spacing: 3.5px;
   text-transform: uppercase;
 
