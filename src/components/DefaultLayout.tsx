@@ -4,7 +4,7 @@ import Footer from './Footer';
 import Header from './Header';
 
 const Container = styled.div`
-  min-height: calc(100vh - 100px - 80px);
+  min-height: 100vh;
 `;
 
 const DefaultLayout = ({ children }: any) => (
