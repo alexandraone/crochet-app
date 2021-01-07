@@ -1,16 +1,11 @@
-import React, { FC } from 'react';
+import axios from 'axios';
+import React, { FC, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { ImageType } from './ImageContentModal';
 
 export interface ImageProps {
   onImageClick: (isShowing: boolean, image: ImageType) => void;
-  image: {
-    src: string;
-    id: number;
-    description: string;
-    title: string;
-    madeBy: string;
-  };
+  pattern: any;
 }
 
 const StyledImage = styled.img`
@@ -53,17 +48,27 @@ const ImageBox = styled.div`
   cursor: pointer;
 `;
 
-const Image: FC<ImageProps> = ({ image, onImageClick }) => {
-  const { id, src, title, madeBy } = image;
+const Image: FC<ImageProps> = ({ pattern, onImageClick }) => {
+  const [imageUrl, setImageUrl] = useState('');
+
+  useEffect(() => {
+    const { featured_media } = pattern;
+    axios
+      .get(`/wp-json/wp/v2/media/${featured_media}`)
+      .then((res) => setImageUrl(res.data.media_details.sizes.full.source_url))
+      .catch((err) => console.log(err));
+  }, [pattern]);
+
+  //const { id, src, title, madeBy } = image;
 
   return (
     <Box>
       <ImageBox>
         <StyledImage
-          src={src}
-          alt={title}
-          key={id}
-          onClick={() => onImageClick(true, image)}
+          src={imageUrl}
+          alt='alt'
+          key='123'
+          onClick={() => onImageClick(true, pattern)}
         />
       </ImageBox>
     </Box>

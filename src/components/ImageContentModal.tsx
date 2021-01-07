@@ -1,4 +1,11 @@
-import React, { Dispatch, SetStateAction, useRef } from 'react';
+import axios from 'axios';
+import React, {
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import { devices } from '../helpers/devices';
@@ -14,7 +21,7 @@ export interface ImageType {
 interface ImageContentModalProps {
   open: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
-  image: ImageType;
+  pattern: any;
 }
 
 interface ModalOverlayProps {
@@ -67,6 +74,10 @@ const Content = styled.div`
   padding: 2rem 4rem;
   flex-grow: 1;
   position: relative;
+
+  @media ${devices.tablet} {
+    padding: 0.5rem;
+  }
 `;
 
 const Description = styled.p`
@@ -97,12 +108,27 @@ const ModalBox = styled.div<ModalBoxProps>`
 const ImageContentModal = ({
   setIsOpen,
   open,
-  image,
+  pattern,
 }: ImageContentModalProps) => {
+  const [imageUrl, setImageUrl] = useState('');
+
   const clickOutsideRef = useRef<HTMLDivElement>(null);
   useClickedOutside(clickOutsideRef, setIsOpen);
 
-  const { title, description, src, madeBy } = image;
+  useEffect(() => {
+    const { featured_media } = pattern;
+    const fetchData = async () => {
+      const result = await axios.get(`/wp-json/wp/v2/media/${featured_media}`);
+      setImageUrl(result.data.media_details.sizes.full.source_url);
+    };
+
+    fetchData();
+  }, [pattern]);
+
+  const description = pattern.content.rendered;
+  console.log(pattern);
+
+  //const { title, description, src, madeBy } = image;
 
   return ReactDOM.createPortal(
     <ModalOverlay
@@ -113,12 +139,12 @@ const ImageContentModal = ({
       open={open}
     >
       <StyledModal ref={clickOutsideRef}>
-        <ModalBox style={{ display: 'flex', height: '100%' }} image={src}>
+        <ModalBox style={{ display: 'flex', height: '100%' }} image={imageUrl}>
           <Content>
-            <h3 className='text'>{title}</h3>
-            <Description>{description}</Description>
+            <h3 className='text'>{pattern.title.rendered}</h3>
+            <Description dangerouslySetInnerHTML={{ __html: description }} />
             <MadeBy>
-              Mönstret kommer från: <b>{madeBy}</b>
+              Mönstret kommer från: <b>{pattern.acf.made_by}</b>
             </MadeBy>
           </Content>
         </ModalBox>

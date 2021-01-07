@@ -1,9 +1,9 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import useModal from './hooks/useModal';
 import Image from './Image';
 import ImageContentModal, { ImageType } from './ImageContentModal';
-import images from './images';
 
 const Container = styled.div`
   position: relative;
@@ -20,10 +20,23 @@ const ImageList = () => {
     madeBy: '',
   });
 
+  const [patterns, setPatterns] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
+
   const onImageClick = (isShowing: boolean, image: ImageType) => {
     setIsOpen(isShowing);
     setImage(image);
   };
+
+  useEffect(() => {
+    axios
+      .get('/wp-json/wp/v2/patterns')
+      .then((res) => {
+        setPatterns(res.data);
+        setIsLoaded(true);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   useEffect(() => {
     if (isOpen) {
@@ -37,12 +50,22 @@ const ImageList = () => {
     };
   }, [isOpen]);
 
+  if (!isLoaded) {
+    return <div>loading patterns...</div>;
+  }
+
   return (
     <Container>
-      {images.map((image, index) => (
-        <Image image={image} key={index} onImageClick={onImageClick} />
+      {patterns.map((pattern, index) => (
+        <React.Fragment key={index}>
+          <Image pattern={pattern} key={index} onImageClick={onImageClick} />
+          <ImageContentModal
+            open={isOpen}
+            setIsOpen={setIsOpen}
+            pattern={pattern}
+          />
+        </React.Fragment>
       ))}
-      <ImageContentModal open={isOpen} setIsOpen={setIsOpen} image={image} />
     </Container>
   );
 };
