@@ -1,11 +1,4 @@
-import axios from 'axios';
-import React, {
-  Dispatch,
-  SetStateAction,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import React, { Dispatch, SetStateAction, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import { devices } from '../helpers/devices';
@@ -22,6 +15,7 @@ interface ImageContentModalProps {
   open: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   pattern: any;
+  selectedImage: string;
 }
 
 interface ModalOverlayProps {
@@ -116,26 +110,12 @@ const ImageContentModal = ({
   setIsOpen,
   open,
   pattern,
+  selectedImage,
 }: ImageContentModalProps) => {
-  const [imageUrl, setImageUrl] = useState('');
-
   const clickOutsideRef = useRef<HTMLDivElement>(null);
   useClickedOutside(clickOutsideRef, setIsOpen);
 
-  useEffect(() => {
-    const { featured_media } = pattern;
-    const fetchData = async () => {
-      const result = await axios.get(`/wp-json/wp/v2/media/${featured_media}`);
-      setImageUrl(result.data.media_details.sizes.full.source_url);
-    };
-
-    fetchData();
-  }, [pattern]);
-
   const description = pattern.content.rendered;
-  console.log(pattern);
-
-  //const { title, description, src, madeBy } = image;
 
   return ReactDOM.createPortal(
     <ModalOverlay
@@ -146,7 +126,10 @@ const ImageContentModal = ({
       open={open}
     >
       <StyledModal ref={clickOutsideRef}>
-        <ModalBox style={{ display: 'flex', height: '100%' }} image={imageUrl}>
+        <ModalBox
+          style={{ display: 'flex', height: '100%' }}
+          image={selectedImage}
+        >
           <Content>
             <h3 className='text'>{pattern.title.rendered}</h3>
             <Description dangerouslySetInnerHTML={{ __html: description }} />

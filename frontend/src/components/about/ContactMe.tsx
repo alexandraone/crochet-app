@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { devices } from '../../helpers/devices';
 
 const Container = styled.div`
   text-align: center;
@@ -8,6 +9,10 @@ const Container = styled.div`
 
 const Heading = styled.h1`
   margin-bottom: 1rem;
+
+  @media ${devices.mobileL} {
+    font-size: 1.5rem;
+  }
 `;
 
 const Content = styled.p`

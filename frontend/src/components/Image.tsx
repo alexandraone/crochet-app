@@ -1,10 +1,9 @@
 import axios from 'axios';
 import React, { FC, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { ImageType } from './ImageContentModal';
 
 export interface ImageProps {
-  onImageClick: (isShowing: boolean, image: ImageType) => void;
+  onImageClick: (isShowing: boolean, image: string) => void;
   pattern: any;
 }
 
@@ -59,8 +58,6 @@ const Image: FC<ImageProps> = ({ pattern, onImageClick }) => {
       .catch((err) => console.log(err));
   }, [pattern]);
 
-  //const { id, src, title, madeBy } = image;
-
   return (
     <Box>
       <ImageBox>
@@ -68,7 +65,7 @@ const Image: FC<ImageProps> = ({ pattern, onImageClick }) => {
           src={imageUrl}
           alt='alt'
           key='123'
-          onClick={() => onImageClick(true, pattern)}
+          onClick={() => onImageClick(true, imageUrl)}
         />
       </ImageBox>
     </Box>

@@ -58,6 +58,10 @@ const TextBox = styled.div`
 const Heading = styled.h1`
   letter-spacing: 1.5px;
   margin-bottom: 1rem;
+
+  @media ${devices.mobileL} {
+    font-size: 1.5rem;
+  }
 `;
 
 const Paragraph = styled.p`

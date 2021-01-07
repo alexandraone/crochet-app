@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import useModal from './hooks/useModal';
 import Image from './Image';
-import ImageContentModal, { ImageType } from './ImageContentModal';
+import ImageContentModal from './ImageContentModal';
 
 const Container = styled.div`
   position: relative;
@@ -13,19 +13,14 @@ const Container = styled.div`
 
 const ImageList = () => {
   const { isOpen, setIsOpen } = useModal();
-  const [image, setImage] = useState({
-    src: '',
-    description: '',
-    title: '',
-    madeBy: '',
-  });
+  const [selectedImage, setSelectedImage] = useState('');
 
   const [patterns, setPatterns] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  const onImageClick = (isShowing: boolean, image: ImageType) => {
+  const onImageClick = (isShowing: boolean, imageUrl: string) => {
     setIsOpen(isShowing);
-    setImage(image);
+    setSelectedImage(imageUrl);
   };
 
   useEffect(() => {
@@ -63,6 +58,7 @@ const ImageList = () => {
             open={isOpen}
             setIsOpen={setIsOpen}
             pattern={pattern}
+            selectedImage={selectedImage}
           />
         </React.Fragment>
       ))}
