@@ -4,7 +4,7 @@ import About from './components/about/About';
 import ContactMe from './components/about/ContactMe';
 import DefaultLayout from './components/DefaultLayout';
 import Home from './components/Home';
-import ImageList from './components/ImageList';
+import Portfolio from './components/Portfolio';
 import GlobalStyle from './styles/GlobalStyles';
 
 const App: FC = () => {
@@ -20,7 +20,7 @@ const App: FC = () => {
             <About />
           </Route>
           <Route path='/portfolio' exact>
-            <ImageList />
+            <Portfolio />
           </Route>
           <Route path='/contact-me' exact>
             <ContactMe />

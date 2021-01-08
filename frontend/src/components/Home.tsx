@@ -20,7 +20,7 @@ const Home: FC = () => {
       <Hero />
       <Section backgroundDark>
         <ImageListWrapper id='mina-virkningar'>
-          <Heading>Mina virkningar</Heading>
+          <Heading>Mina senaste virkningar</Heading>
           <ImageList />
         </ImageListWrapper>
       </Section>

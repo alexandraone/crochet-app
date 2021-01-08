@@ -8,43 +8,56 @@ export interface ImageProps {
 }
 
 const StyledImage = styled.img`
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
 `;
 const Box = styled.div`
   position: relative;
-  width: 400px;
-  height: 580px;
-  margin: 2px;
+  margin: 1rem;
   overflow: hidden;
   flex-grow: 1;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   transition: transform 0.3s;
+  width: 400px;
 
   &:nth-last-child(-n + 2) {
     margin-bottom: 0;
   }
-
-  &:hover,
-  &:active {
-    transform: scale(1.05);
-    z-index: 2;
-  }
 `;
 
 const ImageBox = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  position: relative;
   background: rgba(0, 0, 0, 0.7);
   opacity: 0.8;
   cursor: pointer;
+`;
+
+const Overlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  transition: 0.5s ease;
+  background-color: rgba(255, 255, 255, 0.7);
+  opacity: 0;
+
+  :hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+`;
+
+const Description = styled.p`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  font-weight: bold;
 `;
 
 const Image: FC<ImageProps> = ({ pattern, onImageClick }) => {
@@ -61,13 +74,11 @@ const Image: FC<ImageProps> = ({ pattern, onImageClick }) => {
   return (
     <Box>
       <ImageBox>
-        <StyledImage
-          src={imageUrl}
-          alt='alt'
-          key='123'
-          onClick={() => onImageClick(true, imageUrl, pattern)}
-        />
+        <StyledImage src={imageUrl} alt='alt' key='123' />
       </ImageBox>
+      <Overlay onClick={() => onImageClick(true, imageUrl, pattern)}>
+        <Description>{pattern?.title?.rendered}</Description>
+      </Overlay>
     </Box>
   );
 };

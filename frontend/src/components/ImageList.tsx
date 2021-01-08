@@ -54,7 +54,6 @@ const ImageList = () => {
   return (
     <Container>
       {patterns.map((pattern, index) => {
-        //@ts-ignore
         return (
           <React.Fragment key={index}>
             <Image pattern={pattern} key={index} onImageClick={onImageClick} />
