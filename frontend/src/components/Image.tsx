@@ -3,7 +3,7 @@ import React, { FC, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 export interface ImageProps {
-  onImageClick: (isShowing: boolean, image: string) => void;
+  onImageClick: (isShowing: boolean, image: string, pattern: any) => void;
   pattern: any;
 }
 
@@ -65,7 +65,7 @@ const Image: FC<ImageProps> = ({ pattern, onImageClick }) => {
           src={imageUrl}
           alt='alt'
           key='123'
-          onClick={() => onImageClick(true, imageUrl)}
+          onClick={() => onImageClick(true, imageUrl, pattern)}
         />
       </ImageBox>
     </Box>

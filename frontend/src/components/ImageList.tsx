@@ -14,13 +14,15 @@ const Container = styled.div`
 const ImageList = () => {
   const { isOpen, setIsOpen } = useModal();
   const [selectedImage, setSelectedImage] = useState('');
+  const [selectedPattern, setSelectedPattern] = useState('');
 
   const [patterns, setPatterns] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  const onImageClick = (isShowing: boolean, imageUrl: string) => {
+  const onImageClick = (isShowing: boolean, imageUrl: string, pattern: any) => {
     setIsOpen(isShowing);
     setSelectedImage(imageUrl);
+    setSelectedPattern(pattern);
   };
 
   useEffect(() => {
@@ -51,17 +53,20 @@ const ImageList = () => {
 
   return (
     <Container>
-      {patterns.map((pattern, index) => (
-        <React.Fragment key={index}>
-          <Image pattern={pattern} key={index} onImageClick={onImageClick} />
-          <ImageContentModal
-            open={isOpen}
-            setIsOpen={setIsOpen}
-            pattern={pattern}
-            selectedImage={selectedImage}
-          />
-        </React.Fragment>
-      ))}
+      {patterns.map((pattern, index) => {
+        //@ts-ignore
+        return (
+          <React.Fragment key={index}>
+            <Image pattern={pattern} key={index} onImageClick={onImageClick} />
+            <ImageContentModal
+              open={isOpen}
+              setIsOpen={setIsOpen}
+              pattern={selectedPattern}
+              selectedImage={selectedImage}
+            />
+          </React.Fragment>
+        );
+      })}
     </Container>
   );
 };

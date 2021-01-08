@@ -115,7 +115,7 @@ const ImageContentModal = ({
   const clickOutsideRef = useRef<HTMLDivElement>(null);
   useClickedOutside(clickOutsideRef, setIsOpen);
 
-  const description = pattern.content.rendered;
+  const description = pattern?.content?.rendered;
 
   return ReactDOM.createPortal(
     <ModalOverlay
@@ -131,10 +131,10 @@ const ImageContentModal = ({
           image={selectedImage}
         >
           <Content>
-            <h3 className='text'>{pattern.title.rendered}</h3>
+            <h3 className='text'>{pattern?.title?.rendered}</h3>
             <Description dangerouslySetInnerHTML={{ __html: description }} />
             <MadeBy>
-              Mönstret kommer från: <b>{pattern.acf.made_by}</b>
+              Mönstret kommer från: <b>{pattern?.acf?.made_by}</b>
             </MadeBy>
           </Content>
         </ModalBox>
