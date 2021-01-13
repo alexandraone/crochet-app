@@ -104,6 +104,7 @@ const ModalBox = styled.div<ModalBoxProps>`
     ),
     ${({ image }) => `url(${image})`};
   background-size: cover;
+  background-position: right 0 top 50%;
 `;
 
 const ImageContentModal = ({

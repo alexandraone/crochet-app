@@ -42,7 +42,7 @@ const Overlay = styled.div`
   height: 100%;
   width: 100%;
   transition: 0.5s ease;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(230, 230, 230, 0.8);
   opacity: 0;
 
   :hover {
