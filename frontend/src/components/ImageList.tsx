@@ -1,9 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import useModal from './hooks/useModal';
 import Image from './Image';
-import ImageContentModal from './ImageContentModal';
 
 const Container = styled.div`
   position: relative;
@@ -12,17 +11,16 @@ const Container = styled.div`
 `;
 
 const ImageList = () => {
-  const { isOpen, setIsOpen } = useModal();
-  const [selectedImage, setSelectedImage] = useState('');
-  const [selectedPattern, setSelectedPattern] = useState('');
-
   const [patterns, setPatterns] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  const onImageClick = (isShowing: boolean, imageUrl: string, pattern: any) => {
-    setIsOpen(isShowing);
-    setSelectedImage(imageUrl);
-    setSelectedPattern(pattern);
+  const history = useHistory();
+
+  const onImageClick = (pattern: any) => {
+    history.push({
+      pathname: `pattern/${pattern.id}`,
+      state: { pattern },
+    });
   };
 
   useEffect(() => {
@@ -35,18 +33,6 @@ const ImageList = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflowY = 'hidden';
-    } else {
-      document.body.style.overflowY = 'unset';
-    }
-
-    return () => {
-      document.body.style.overflowY = 'unset';
-    };
-  }, [isOpen]);
-
   if (!isLoaded) {
     return <div>loading patterns...</div>;
   }
@@ -55,15 +41,7 @@ const ImageList = () => {
     <Container>
       {patterns.map((pattern, index) => {
         return (
-          <React.Fragment key={index}>
-            <Image pattern={pattern} key={index} onImageClick={onImageClick} />
-            <ImageContentModal
-              open={isOpen}
-              setIsOpen={setIsOpen}
-              pattern={selectedPattern}
-              selectedImage={selectedImage}
-            />
-          </React.Fragment>
+          <Image key={index} pattern={pattern} onImageClick={onImageClick} />
         );
       })}
     </Container>

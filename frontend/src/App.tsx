@@ -4,12 +4,15 @@ import About from './components/about/About';
 import ContactMe from './components/about/ContactMe';
 import DefaultLayout from './components/DefaultLayout';
 import Home from './components/Home';
+import Pattern from './components/PatternDescription';
 import Portfolio from './components/Portfolio';
+import ScrollToTop from './helpers/ScrollToTop';
 import GlobalStyle from './styles/GlobalStyles';
 
 const App: FC = () => {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <GlobalStyle />
       <Switch>
         <DefaultLayout>
@@ -24,6 +27,9 @@ const App: FC = () => {
           </Route>
           <Route path='/contact-me' exact>
             <ContactMe />
+          </Route>
+          <Route path='/pattern/:id' exact>
+            <Pattern />
           </Route>
         </DefaultLayout>
       </Switch>

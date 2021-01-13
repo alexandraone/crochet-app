@@ -3,7 +3,7 @@ import React, { FC, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 export interface ImageProps {
-  onImageClick: (isShowing: boolean, image: string, pattern: any) => void;
+  onImageClick: (pattern: any) => void;
   pattern: any;
 }
 
@@ -74,9 +74,9 @@ const Image: FC<ImageProps> = ({ pattern, onImageClick }) => {
   return (
     <Box>
       <ImageBox>
-        <StyledImage src={imageUrl} alt='alt' key='123' />
+        <StyledImage src={imageUrl} alt='alt' />
       </ImageBox>
-      <Overlay onClick={() => onImageClick(true, imageUrl, pattern)}>
+      <Overlay onClick={() => onImageClick(pattern)}>
         <Description>{pattern?.title?.rendered}</Description>
       </Overlay>
     </Box>
