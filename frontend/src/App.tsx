@@ -5,7 +5,7 @@ import ContactMe from './components/about/ContactMe';
 import DefaultLayout from './components/DefaultLayout';
 import Home from './components/Home';
 import Pattern from './components/PatternDescription';
-import Portfolio from './components/Portfolio';
+import Portfolio from './components/patterns/Portfolio';
 import ScrollToTop from './helpers/ScrollToTop';
 import GlobalStyle from './styles/GlobalStyles';
 
@@ -16,20 +16,20 @@ const App: FC = () => {
       <GlobalStyle />
       <Switch>
         <DefaultLayout>
-          <Route path='/' exact>
+          <Route path='/virkning' exact>
             <Home />
           </Route>
-          <Route path='/about' exact>
+          <Route path='/virkning/about' exact>
             <About />
           </Route>
-          <Route path='/portfolio' exact>
-            <Portfolio />
-          </Route>
-          <Route path='/contact-me' exact>
+          <Route path='/virkning/contact-me' exact>
             <ContactMe />
           </Route>
-          <Route path='/pattern/:id' exact>
+          <Route path='/virkning/pattern/:id' exact>
             <Pattern />
+          </Route>
+          <Route path='/virkning/portfolio' exact>
+            <Portfolio />
           </Route>
         </DefaultLayout>
       </Switch>

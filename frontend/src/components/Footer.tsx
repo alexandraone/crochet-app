@@ -16,11 +16,11 @@ const StyledFooter = styled.footer`
 
 const FooterContent = styled.div`
   display: flex;
-  padding: 1rem 2rem;
+  padding: 2rem 2rem;
   justify-content: space-between;
   align-items: center;
   @media ${devices.tablet} {
-    padding: 1rem 0.5rem;
+    padding: 2rem 0.5rem;
   }
 
   @media ${devices.mobileL} {

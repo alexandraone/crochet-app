@@ -33,7 +33,7 @@ const StyledSideMenu = styled.aside<SideMenuProps>`
     cursor: pointer;
   }
 
-  @media ${devices.mobileL} {
+  @media ${devices.tablet} {
     width: 100%;
   }
 `;
@@ -59,29 +59,29 @@ const SideMenu = ({
 
   return (
     <StyledSideMenu show={showMenu}>
-      <Link
-        to='/pattern'
+      {/* <Link
+        to='/virkning/patterns'
         className='sidemenu_link'
         onClick={() => setShowMenu(false)}
       >
         Mönster
-      </Link>
+      </Link> */}
       <Link
-        to='/portfolio'
+        to='/virkning/portfolio'
         className='sidemenu_link'
         onClick={() => setShowMenu(false)}
       >
         Mina virkningar
       </Link>
       <Link
-        to='/about'
+        to='/virkning/about'
         className='sidemenu_link'
         onClick={() => setShowMenu(false)}
       >
         Om mig
       </Link>
       <HashLink
-        to='about#kontakta-mig'
+        to='/virkning/about#kontakta-mig'
         className='sidemenu_link'
         onClick={() => setShowMenu(false)}
       >

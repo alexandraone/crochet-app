@@ -2,7 +2,7 @@ import React from 'react';
 import { HashLink as Link } from 'react-router-hash-link';
 import styled from 'styled-components';
 import { devices } from '../helpers/devices';
-import ForestBgVideo from '../static/crochet-video.mp4';
+import CrochetVideo from '../static/crochet-video.mp4';
 
 const Wrapper = styled.div`
   position: relative;
@@ -70,7 +70,7 @@ const Hero = () => {
       <Heading>Virkning</Heading>
       <BgVideo>
         <Video autoPlay muted loop>
-          <source src={ForestBgVideo} type='video/webm' />
+          <source src={CrochetVideo} type='video/mp4' />
         </Video>
       </BgVideo>
       <Button to='#mina-virkningar'>Se mina virkningar</Button>

@@ -18,7 +18,7 @@ const ImageList = () => {
 
   const onImageClick = (pattern: any) => {
     history.push({
-      pathname: `pattern/${pattern.id}`,
+      pathname: `/virkning/pattern/${pattern.id}`,
       state: { pattern },
     });
   };
@@ -41,7 +41,9 @@ const ImageList = () => {
     <Container>
       {patterns.map((pattern, index) => {
         return (
-          <Image key={index} pattern={pattern} onImageClick={onImageClick} />
+          index <= 3 && (
+            <Image key={index} pattern={pattern} onImageClick={onImageClick} />
+          )
         );
       })}
     </Container>

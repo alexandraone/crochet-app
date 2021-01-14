@@ -14,7 +14,7 @@ const Container = styled.div`
   transform: skewX(-12deg);
   display: flex;
 
-  @media ${devices.tablet} {
+  @media ${devices.laptop} {
     transform: skewX(0);
     width: auto;
     box-shadow: none;
@@ -36,7 +36,7 @@ const Image = styled.img`
   transform: skewX(12deg);
   margin-right: 3rem;
 
-  @media ${devices.tablet} {
+  @media ${devices.laptop} {
     transform: skewX(0);
     margin: 3rem auto;
   }
@@ -50,7 +50,7 @@ const Image = styled.img`
 const TextBox = styled.div`
   transform: skewX(12deg);
 
-  @media ${devices.tablet} {
+  @media ${devices.laptop} {
     transform: skewX(0);
   }
 `;
@@ -75,7 +75,7 @@ const Wrapper = styled.div`
   background-color: #dfd5d6;
   height: 100vh;
 
-  @media ${devices.tablet} {
+  @media ${devices.laptop} {
     background-color: #dfd5d6;
     height: auto;
   }

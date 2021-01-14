@@ -78,10 +78,10 @@ const Header = () => {
   return (
     <StyledHeader className={scrolled ? 'header active' : 'header'}>
       <Container>
-        <Link to='/'>DIY - Virkning</Link>
+        <Link to='/virkning'>DIY - Virkning</Link>
         <RightLinks>
-          <Link to='/about'>Om mig</Link>
-          <Link to='/pattern'>Mönster</Link>
+          <Link to='/virkning/about'>Om mig</Link>
+          <Link to='/virkning/portfolio'>Mina virkningar</Link>
         </RightLinks>
         <MenuButton onClick={() => setShowMenu(!showMenu)}>
           <Burger className={showMenu ? 'open' : ''} scrolled={scrolled} />
