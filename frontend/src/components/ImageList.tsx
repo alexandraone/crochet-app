@@ -24,8 +24,12 @@ const ImageList = () => {
   };
 
   useEffect(() => {
+    const url =
+      process.env.REACT_APP_ENV === 'development'
+        ? '/wp-json/wp/v2/patterns'
+        : 'virkning/wp/wp-json/wp/v2/patterns';
     axios
-      .get('/wp-json/wp/v2/patterns')
+      .get(url)
       .then((res) => {
         setPatterns(res.data);
         setIsLoaded(true);
