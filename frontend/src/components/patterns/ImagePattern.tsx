@@ -11,8 +11,13 @@ const ImagePattern = ({ pattern }: any) => {
 
   useEffect(() => {
     const { featured_media } = pattern;
+    const url =
+      process.env.REACT_APP_ENV === 'development'
+        ? `/wp-json/wp/v2/media/${featured_media}`
+        : `/virkning/wp/wp-json/wp/v2/media/${featured_media}`;
+
     axios
-      .get(`/wp-json/wp/v2/media/${featured_media}`)
+      .get(url)
       .then((res) => setImageUrl(res.data.media_details.sizes.full.source_url))
       .catch((err) => console.log(err));
   }, [pattern]);

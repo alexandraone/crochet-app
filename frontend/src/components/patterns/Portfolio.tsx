@@ -32,7 +32,7 @@ const Patterns = () => {
     const url =
       process.env.REACT_APP_ENV === 'development'
         ? '/wp-json/wp/v2/patterns'
-        : 'virkning/wp/wp-json/wp/v2/patterns';
+        : '/virkning/wp/wp-json/wp/v2/patterns';
     axios
       .get(url)
       .then((res) => {

@@ -26,8 +26,8 @@ const ImageList = () => {
   useEffect(() => {
     const url =
       process.env.REACT_APP_ENV === 'development'
-        ? '/wp-json/wp/v2/patterns'
-        : 'virkning/wp/wp-json/wp/v2/patterns';
+        ? '/wp-json/wp/v2/patterns?per_page=3'
+        : '/virkning/wp/wp-json/wp/v2/patterns?per_page=3';
     axios
       .get(url)
       .then((res) => {
@@ -43,13 +43,9 @@ const ImageList = () => {
 
   return (
     <Container>
-      {patterns.map((pattern, index) => {
-        return (
-          index <= 3 && (
-            <Image key={index} pattern={pattern} onImageClick={onImageClick} />
-          )
-        );
-      })}
+      {patterns.map((pattern, index) => (
+        <Image key={index} pattern={pattern} onImageClick={onImageClick} />
+      ))}
     </Container>
   );
 };

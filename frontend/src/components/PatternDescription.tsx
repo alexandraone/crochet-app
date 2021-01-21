@@ -75,8 +75,8 @@ const Pattern = () => {
     const { featured_media } = pattern;
     const url =
       process.env.REACT_APP_ENV === 'development'
-        ? `wp-json/wp/v2/media/${featured_media}`
-        : `virkning/wp/wp-json/wp/v2/media/${featured_media}`;
+        ? `/wp-json/wp/v2/media/${featured_media}`
+        : `/virkning/wp/wp-json/wp/v2/media/${featured_media}`;
 
     axios
       .get(url)
