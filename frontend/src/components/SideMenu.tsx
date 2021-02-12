@@ -59,13 +59,6 @@ const SideMenu = ({
 
   return (
     <StyledSideMenu show={showMenu}>
-      {/* <Link
-        to='/virkning/patterns'
-        className='sidemenu_link'
-        onClick={() => setShowMenu(false)}
-      >
-        Mönster
-      </Link> */}
       <Link
         to='/virkning/portfolio'
         className='sidemenu_link'

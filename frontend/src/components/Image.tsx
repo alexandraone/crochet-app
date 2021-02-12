@@ -1,11 +1,5 @@
-import axios from 'axios';
-import React, { FC, useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-
-export interface ImageProps {
-  onImageClick: (pattern: any) => void;
-  pattern: any;
-}
 
 const StyledImage = styled.img`
   width: 100%;
@@ -58,29 +52,17 @@ const Description = styled.p`
   font-weight: bold;
 `;
 
-const Image: FC<ImageProps> = ({ pattern, onImageClick }) => {
-  const [imageUrl, setImageUrl] = useState('');
-
-  useEffect(() => {
-    const { featured_media } = pattern;
-    const url =
-      process.env.REACT_APP_ENV === 'development'
-        ? `wp-json/wp/v2/media/${featured_media}`
-        : `/virkning/wp/wp-json/wp/v2/media/${featured_media}`;
-
-    axios
-      .get(url)
-      .then((res) => setImageUrl(res.data.media_details.sizes.full.source_url))
-      .catch((err) => console.log(err));
-  }, [pattern]);
-
+const Image = ({ pattern }: any) => {
   return (
     <Box>
       <ImageBox>
-        <StyledImage src={imageUrl} alt='alt' />
+        <StyledImage
+          src={pattern?.node.featuredImage.node?.sourceUrl}
+          alt={pattern?.node.featuredImage.node?.altText}
+        />
       </ImageBox>
-      <Overlay onClick={() => onImageClick(pattern)}>
-        <Description>{pattern?.title?.rendered}</Description>
+      <Overlay>
+        <Description>{pattern?.node.title}</Description>
       </Overlay>
     </Box>
   );

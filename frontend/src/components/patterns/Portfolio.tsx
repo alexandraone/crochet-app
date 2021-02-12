@@ -1,7 +1,8 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { useQuery } from 'react-apollo';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { getPatternsQuery } from '../queries/GetPatternsQuery';
 import ImagePattern from './ImagePattern';
 
 const Wrapper = styled.div`
@@ -12,7 +13,7 @@ const Wrapper = styled.div`
 `;
 
 const ImageBox = styled(Link)`
-  border: 5px solid #fff;
+  border: 5px solid #d3d3d3;
   border-radius: 3px;
   padding: 1rem;
   margin: 1rem;
@@ -26,30 +27,29 @@ const Title = styled.p`
 `;
 
 const Patterns = () => {
-  const [patterns, setPatterns] = useState([]);
+  const { data, error, loading } = useQuery(getPatternsQuery);
 
-  useEffect(() => {
-    const url =
-      process.env.REACT_APP_ENV === 'development'
-        ? '/wp-json/wp/v2/patterns'
-        : '/virkning/wp/wp-json/wp/v2/patterns';
-    axios
-      .get(url)
-      .then((res) => {
-        setPatterns(res.data);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+  if (loading) {
+    return <div>loading patterns...</div>;
+  }
+
+  if (error) {
+    return <div>Error with fetching patterns...</div>;
+  }
 
   return (
     <Wrapper>
-      {patterns.map((pattern: any) => {
+      {data.patterns.edges.map((pattern: any, index: number) => {
         return (
           <ImageBox
-            to={{ pathname: `pattern/${pattern.id}`, state: { pattern } }}
+            key={index}
+            to={{
+              pathname: `/virkning/pattern/${pattern.node.slug}`,
+              state: { pattern },
+            }}
           >
             <ImagePattern pattern={pattern} />
-            <Title>{pattern.title.rendered}</Title>
+            <Title>{pattern.title}</Title>
           </ImageBox>
         );
       })}

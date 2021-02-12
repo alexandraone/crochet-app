@@ -1,5 +1,4 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { devices } from '../helpers/devices';
@@ -61,9 +60,7 @@ const Wrapper = styled.div`
   margin-top: 6rem;
 `;
 
-const Pattern = () => {
-  const [imageUrl, setImageUrl] = useState('');
-
+const PatternDescription = () => {
   interface LocationParams {
     pattern: any;
   }
@@ -71,38 +68,23 @@ const Pattern = () => {
   const location = useLocation<LocationParams>();
   const pattern = location.state.pattern;
 
-  useEffect(() => {
-    const { featured_media } = pattern;
-    const url =
-      process.env.REACT_APP_ENV === 'development'
-        ? `/wp-json/wp/v2/media/${featured_media}`
-        : `/virkning/wp/wp-json/wp/v2/media/${featured_media}`;
-
-    axios
-      .get(url)
-      .then((res) => setImageUrl(res.data.media_details.sizes.full.source_url))
-      .catch((err) => console.log(err));
-  }, [pattern]);
-
-  interface MatchParams {
-    id: string;
-  }
-
-  const description = pattern?.content?.rendered;
+  const description = pattern?.node.content;
+  const imageUrl = pattern?.node.featuredImage.node.sourceUrl;
+  const imageAltText = pattern?.node.featuredImage.node.altText;
 
   return (
     <Wrapper>
-      <Image src={imageUrl} alt='crochet' />
-      <Heading className='text'>{pattern?.title?.rendered}</Heading>
+      <Image src={imageUrl} alt={imageAltText} />
+      <Heading className='text'>{pattern?.node.title}</Heading>
       <Overlay />
       <Content>
         <Description dangerouslySetInnerHTML={{ __html: description }} />
         <MadeBy>
-          Mönstret kommer från: <b>{pattern?.acf?.made_by}</b>
+          Mönstret kommer från: <b>{pattern?.node?.pattern?.madeBy}</b>
         </MadeBy>
       </Content>
     </Wrapper>
   );
 };
 
-export default Pattern;
+export default PatternDescription;
