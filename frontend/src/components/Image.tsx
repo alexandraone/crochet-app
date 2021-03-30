@@ -48,6 +48,7 @@ const Description = styled.p`
   transform: translate(-50%, -50%);
   font-size: 1.5rem;
   font-weight: bold;
+  text-align: center;
 `;
 
 const Image = ({ pattern }: any) => {

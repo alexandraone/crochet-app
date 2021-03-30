@@ -3,19 +3,28 @@ import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { devices } from '../helpers/devices';
 
-const Image = styled.img`
+const Wrapper = styled.div`
+  margin-top: 6rem;
+`;
+
+const ImgWithContent = styled.div`
   position: relative;
+  height: 70vh;
+`;
+
+const Image = styled.img`
   width: 100%;
-  height: 80vh;
+  height: 100%;
   object-fit: cover;
 `;
 
 const Overlay = styled.div`
   position: absolute;
-  top: 6rem;
+  top: 0;
+  left: 0;
   background-color: rgba(255, 255, 255, 0.1);
   width: 100%;
-  height: 80vh;
+  height: 100%;
 `;
 
 interface HeadingProps {
@@ -31,7 +40,6 @@ const Heading = styled.h3<HeadingProps>`
   background-color: ${({ lightPicture }) =>
     lightPicture ? 'rgba(255, 255, 255, 0.5)' : ''};
   font-size: 3rem;
-  text-align: center;
 `;
 
 const Content = styled.div`
@@ -62,10 +70,6 @@ const MadeBy = styled.p`
   }
 `;
 
-const Wrapper = styled.div`
-  margin-top: 6rem;
-`;
-
 const PatternDescription = () => {
   interface LocationParams {
     pattern: any;
@@ -83,11 +87,13 @@ const PatternDescription = () => {
 
   return (
     <Wrapper>
-      <Image src={imageUrl} alt={imageAltText} />
-      <Heading className='text' lightPicture={lightPicture}>
-        {pattern?.node.title}
-      </Heading>
-      <Overlay />
+      <ImgWithContent>
+        <Image src={imageUrl} alt={imageAltText} />
+        <Heading className='text' lightPicture={lightPicture}>
+          {pattern?.node.title}
+        </Heading>
+        <Overlay />
+      </ImgWithContent>
       <Content>
         <Description dangerouslySetInnerHTML={{ __html: description }} />
         <MadeBy>
