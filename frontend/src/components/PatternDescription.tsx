@@ -9,7 +9,7 @@ const Wrapper = styled.div`
 
 const ImgWithContent = styled.div`
   position: relative;
-  height: 70vh;
+  height: 80vh;
 `;
 
 const Image = styled.img`
@@ -82,8 +82,6 @@ const PatternDescription = () => {
   const imageUrl = pattern?.node.featuredImage.node.sourceUrl;
   const imageAltText = pattern?.node.featuredImage.node.altText;
   const lightPicture = pattern?.node.pattern.lightpicture;
-
-  console.log(pattern);
 
   return (
     <Wrapper>
