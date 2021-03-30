@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   display: grid;
   //grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
   grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: repeat(3, 20vw);
+  grid-template-rows: repeat(9, 8vw);
   gap: 1rem;
   padding: 1rem;
 `;
@@ -27,26 +27,35 @@ interface StyledLinkProps {
 
 const StyledLink = styled(Link)<StyledLinkProps>`
   // Bild 1
-  grid-row: ${(p) => p.imgNumber === 0 && '1 / span 3'};
-  grid-column: ${(p) => p.imgNumber === 0 && '1 / span 3'};
-
+  grid-row: ${(p) => p.imgNumber === 2 && '1 / span 4'};
+  grid-column: ${(p) => p.imgNumber === 2 && '1 / span 2'};
   // Bild 2
-  grid-row: ${(p) => p.imgNumber === 2 && '1 / span 2'};
-  grid-column: ${(p) => p.imgNumber === 2 && '4 / span 3'};
+  grid-row: ${(p) => p.imgNumber === 5 && '1 / span 4'};
+  grid-column: ${(p) => p.imgNumber === 5 && '3 / span 2'};
 
   // Bild 3
-  grid-row: ${(p) => p.imgNumber === 3 && '1 / span 1'};
-  grid-column: ${(p) => p.imgNumber === 3 && '7 / span 2'};
+  grid-row: ${(p) => p.imgNumber === 4 && '1 / span 4'};
+  grid-column: ${(p) => p.imgNumber === 4 && '5 / span 4'};
 
   // Bild 4
-  grid-row: ${(p) => p.imgNumber === 5 && '2 / span 2'};
-  grid-column: ${(p) => p.imgNumber === 5 && '7 / span 2'};
+  grid-row: ${(p) => p.imgNumber === 3 && '5 / span 3'};
+  grid-column: ${(p) => p.imgNumber === 3 && '1 / span 3'};
 
   // Bild 5
-  grid-row: ${(p) => p.imgNumber === 1 && '3 / span 1'};
-  grid-column: ${(p) => p.imgNumber === 1 && '4 / span 2'};
+  grid-row: ${(p) => p.imgNumber === 0 && '5 / span 3'};
+  grid-column: ${(p) => p.imgNumber === 0 && '4 / span 2'};
 
+  // Bild 6
+  grid-row: ${(p) => p.imgNumber === 1 && '5 / span 5'};
+  grid-column: ${(p) => p.imgNumber === 1 && '6 / span 3'};
 
+  // Bild 7
+  grid-row: ${(p) => p.imgNumber === 6 && '8 / span 2'};
+  grid-column: ${(p) => p.imgNumber === 6 && '1 / span 3'};
+
+  // Bild 8
+  grid-row: ${(p) => p.imgNumber === 7 && '8 / span 2'};
+  grid-column: ${(p) => p.imgNumber === 7 && '4 / span 2'};
 `;
 
 const Portfolio = () => {
