@@ -13,17 +13,23 @@ const Image = styled.img`
 const Overlay = styled.div`
   position: absolute;
   top: 6rem;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.1);
   width: 100%;
   height: 80vh;
 `;
 
-const Heading = styled.h3`
+interface HeadingProps {
+  lightPicture: boolean;
+}
+
+const Heading = styled.h3<HeadingProps>`
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: white;
+  color: ${({ lightPicture }) => (lightPicture ? 'black' : 'white')};
+  background-color: ${({ lightPicture }) =>
+    lightPicture ? 'rgba(255, 255, 255, 0.5)' : ''};
   font-size: 3rem;
   text-align: center;
 `;
@@ -71,11 +77,16 @@ const PatternDescription = () => {
   const description = pattern?.node.content;
   const imageUrl = pattern?.node.featuredImage.node.sourceUrl;
   const imageAltText = pattern?.node.featuredImage.node.altText;
+  const lightPicture = pattern?.node.pattern.lightpicture;
+
+  console.log(pattern);
 
   return (
     <Wrapper>
       <Image src={imageUrl} alt={imageAltText} />
-      <Heading className='text'>{pattern?.node.title}</Heading>
+      <Heading className='text' lightPicture={lightPicture}>
+        {pattern?.node.title}
+      </Heading>
       <Overlay />
       <Content>
         <Description dangerouslySetInnerHTML={{ __html: description }} />

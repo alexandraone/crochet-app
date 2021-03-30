@@ -10,6 +10,7 @@ export const getPatternsQuery = gql`
           content
           pattern {
             madeBy
+            lightpicture
           }
           featuredImage {
             node {

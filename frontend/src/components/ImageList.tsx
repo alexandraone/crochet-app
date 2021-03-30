@@ -22,6 +22,7 @@ const ImageList = () => {
             content
             pattern {
               madeBy
+              lightpicture
             }
             featuredImage {
               node {
