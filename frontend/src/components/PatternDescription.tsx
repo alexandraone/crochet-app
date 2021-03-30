@@ -40,6 +40,7 @@ const Heading = styled.h3<HeadingProps>`
   background-color: ${({ lightPicture }) =>
     lightPicture ? 'rgba(255, 255, 255, 0.5)' : ''};
   font-size: 3rem;
+  text-align: center;
 `;
 
 const Content = styled.div`
