@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Image from './Image';
 
-const Container = styled(Link)`
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
+const Container = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1.5rem;
 `;
 
 const ImageList = () => {
@@ -48,10 +48,10 @@ const ImageList = () => {
   }
 
   return (
-    <div>
+    <Container>
       {data.patterns.edges.map((pattern: any, index: number) => {
         return (
-          <Container
+          <Link
             key={index}
             to={{
               pathname: `/virkning/pattern/${pattern.node.slug}`,
@@ -59,10 +59,10 @@ const ImageList = () => {
             }}
           >
             <Image key={index} pattern={pattern} />
-          </Container>
+          </Link>
         );
       })}
-    </div>
+    </Container>
   );
 };
 

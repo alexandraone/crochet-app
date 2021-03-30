@@ -5,16 +5,14 @@ const StyledImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 `;
 const Box = styled.div`
+  width: 100%;
   position: relative;
   margin: 1rem;
   overflow: hidden;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   transition: transform 0.3s;
-  flex: 1 0 400px;
 
   &:nth-last-child(-n + 2) {
     margin-bottom: 0;

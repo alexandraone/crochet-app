@@ -7,17 +7,12 @@ import ImagePattern from './ImagePattern';
 
 const Wrapper = styled.div`
   margin-top: 6rem;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-`;
-
-const ImageBox = styled(Link)`
-  border: 5px solid #d3d3d3;
-  border-radius: 3px;
+  display: grid;
+  //grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(3, 20vw);
+  gap: 1rem;
   padding: 1rem;
-  margin: 1rem;
-  width: 400px;
 `;
 
 const Title = styled.p`
@@ -26,7 +21,35 @@ const Title = styled.p`
   text-align: center;
 `;
 
-const Patterns = () => {
+interface StyledLinkProps {
+  imgNumber: number;
+}
+
+const StyledLink = styled(Link)<StyledLinkProps>`
+  // Bild 1
+  grid-row: ${(p) => p.imgNumber === 0 && '1 / span 3'};
+  grid-column: ${(p) => p.imgNumber === 0 && '1 / span 3'};
+
+  // Bild 2
+  grid-row: ${(p) => p.imgNumber === 2 && '1 / span 2'};
+  grid-column: ${(p) => p.imgNumber === 2 && '4 / span 3'};
+
+  // Bild 3
+  grid-row: ${(p) => p.imgNumber === 3 && '1 / span 1'};
+  grid-column: ${(p) => p.imgNumber === 3 && '7 / span 2'};
+
+  // Bild 4
+  grid-row: ${(p) => p.imgNumber === 5 && '2 / span 2'};
+  grid-column: ${(p) => p.imgNumber === 5 && '7 / span 2'};
+
+  // Bild 5
+  grid-row: ${(p) => p.imgNumber === 1 && '3 / span 1'};
+  grid-column: ${(p) => p.imgNumber === 1 && '4 / span 2'};
+
+
+`;
+
+const Portfolio = () => {
   const { data, error, loading } = useQuery(getPatternsQuery);
 
   if (loading) {
@@ -41,8 +64,9 @@ const Patterns = () => {
     <Wrapper>
       {data.patterns.edges.map((pattern: any, index: number) => {
         return (
-          <ImageBox
+          <StyledLink
             key={index}
+            imgNumber={index}
             to={{
               pathname: `/virkning/pattern/${pattern.node.slug}`,
               state: { pattern },
@@ -50,11 +74,11 @@ const Patterns = () => {
           >
             <ImagePattern pattern={pattern} />
             <Title>{pattern.title}</Title>
-          </ImageBox>
+          </StyledLink>
         );
       })}
     </Wrapper>
   );
 };
 
-export default Patterns;
+export default Portfolio;
