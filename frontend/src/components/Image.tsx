@@ -10,7 +10,6 @@ const StyledImage = styled.img`
 const Box = styled.div`
   width: 100%;
   position: relative;
-  margin: 1rem;
   overflow: hidden;
   transition: transform 0.3s;
 
