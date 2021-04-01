@@ -52,20 +52,26 @@ const Heading = styled.h3<HeadingProps>`
 `;
 
 const Content = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: #111;
   padding: 4rem 4rem;
   flex-grow: 1;
   position: relative;
-  text-align: center;
 
   @media ${devices.tablet} {
-    padding: 1rem;
+    padding: 4rem 1rem;
   }
 `;
 
 const Description = styled.p`
   padding-top: 5rem;
   margin-bottom: 2rem;
+
+  @media ${devices.tablet} {
+    padding-top: 0;
+  }
 `;
 
 const MadeBy = styled.p`
