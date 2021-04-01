@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
+import { devices } from '../helpers/devices';
 import Section from '../styles/Section';
 import Hero from './Hero';
 import ImageList from './ImageList';
@@ -12,6 +13,10 @@ const Heading = styled.h1`
   font-family: 'BioRhyme', serif;
   font-size: 2rem;
   padding-bottom: 4rem;
+
+  @media ${devices.tablet} {
+    text-align: center;
+  }
 `;
 
 const Home: FC = () => {

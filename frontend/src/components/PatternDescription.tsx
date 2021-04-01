@@ -10,6 +10,10 @@ const Wrapper = styled.div`
 const ImgWithContent = styled.div`
   position: relative;
   height: 80vh;
+
+  @media ${devices.tablet} {
+    height: 70vh;
+  }
 `;
 
 const Image = styled.img`
@@ -41,6 +45,10 @@ const Heading = styled.h3<HeadingProps>`
     lightPicture ? 'rgba(255, 255, 255, 0.5)' : ''};
   font-size: 3rem;
   text-align: center;
+
+  @media ${devices.tablet} {
+    font-size: 2rem;
+  }
 `;
 
 const Content = styled.div`
