@@ -12,7 +12,8 @@ import ScrollToTop from './helpers/ScrollToTop';
 import GlobalStyle from './styles/GlobalStyles';
 
 const client = new ApolloClient({
-  uri: 'http://localhost:8001/graphql',
+  //uri: 'http://localhost:8001/graphql',
+  uri: 'http://sternax.se/virkning/wp/graphql',
 });
 
 const App: FC = () => {

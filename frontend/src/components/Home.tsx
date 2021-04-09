@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import { devices } from '../helpers/devices';
-import Section from '../styles/Section';
+import Section from '../ui/Section';
 import Hero from './Hero';
 import ImageList from './ImageList';
 

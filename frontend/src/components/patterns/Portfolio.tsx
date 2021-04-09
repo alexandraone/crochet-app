@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery } from 'react-apollo';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { getPatternsQuery } from '../queries/GetPatternsQuery';
+import { getAllPatternsQuery } from '../queries/GetPatternsQuery';
 import ImagePattern from './ImagePattern';
 
 const Wrapper = styled.div`
@@ -59,7 +59,7 @@ const StyledLink = styled(Link)<StyledLinkProps>`
 `;
 
 const Portfolio = () => {
-  const { data, error, loading } = useQuery(getPatternsQuery);
+  const { data, error, loading } = useQuery(getAllPatternsQuery);
 
   if (loading) {
     return <div>loading patterns...</div>;

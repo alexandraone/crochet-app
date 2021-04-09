@@ -1,9 +1,9 @@
-import gql from 'graphql-tag';
 import React from 'react';
 import { useQuery } from 'react-apollo';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Image from './Image';
+import { getThreePatterns } from './queries/GetPatternsQuery';
 
 const Container = styled.div`
   display: grid;
@@ -12,33 +12,7 @@ const Container = styled.div`
 `;
 
 const ImageList = () => {
-  const getPatterns = gql`
-    {
-      patterns(first: 3) {
-        edges {
-          node {
-            title
-            slug
-            content
-            pattern {
-              madeBy
-              lightpicture
-            }
-            featuredImage {
-              node {
-                altText
-                description
-                sourceUrl
-                caption
-              }
-            }
-          }
-        }
-      }
-    }
-  `;
-
-  const { data, error, loading } = useQuery(getPatterns);
+  const { data, error, loading } = useQuery(getThreePatterns);
 
   if (loading) {
     return <div>loading patterns...</div>;

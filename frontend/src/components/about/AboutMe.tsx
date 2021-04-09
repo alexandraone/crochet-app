@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { devices } from '../../helpers/devices';
-import IMG_0219 from '../../static/images/IMG_0219.jpg';
+import AlexandraImg from '../../static/images/Alexandra.jpeg';
 
 const Container = styled.div`
   width: 75%;
@@ -13,6 +13,14 @@ const Container = styled.div`
   padding-left: 9rem;
   transform: skewX(-12deg);
   display: flex;
+
+  @media only screen and (max-width: 1300px) {
+    padding: 4rem;
+    padding-left: 6rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 
   @media ${devices.laptop} {
     transform: skewX(0);
@@ -73,7 +81,6 @@ const Wrapper = styled.div`
   max-width: 120rem;
   margin: 0 auto;
   background-color: #dfd5d6;
-  height: 100vh;
 
   @media ${devices.laptop} {
     background-color: #dfd5d6;
@@ -85,7 +92,7 @@ const About = () => {
   return (
     <Wrapper>
       <Container>
-        <Image src={IMG_0219} alt='me' />
+        <Image src={AlexandraImg} alt='me' />
         <TextBox>
           <Heading>Bakgrund</Heading>
           <Paragraph>
